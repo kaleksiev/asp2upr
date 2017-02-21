@@ -76,6 +76,7 @@
                             <asp:LoginStatus ID="LoginStatus1" runat="server" />
                         </li>
                     </LoggedInTemplate>
+                    
                 </asp:LoginView>
             </ul>
         </div>

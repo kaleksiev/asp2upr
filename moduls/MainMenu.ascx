@@ -19,25 +19,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <asp:LoginView ID="LoginView1" runat="server">
- 
                     <AnonymousTemplate>
-                        <li>
-                            <a href="~/pages/About.aspx" runat="server">About</a>
-                        </li>
-                        <li>
-                            <a href="~/Register.aspx" runat="server"><span class="glyphicon glyphicon-user"></span>Sign Up</a>
-                        </li>
-                        <li class="dropdowna">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" runat="server"><span class="glyphicon glyphicon-log-in"></span>Login</a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <my:Login ID="login" runat="server" />
-                                </li>
-                            </ul>
-                        </li>
-                    </AnonymousTemplate>
-                     
-                    <LoggedInTemplate>
                         <li>
                             <a href="~/pages/About.aspx" runat="server">About</a>
                         </li>
@@ -53,30 +35,113 @@
                         <li>
                             <a href="~/pages/news/News.aspx" runat="server">News</a>
                         </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Other Pages <b class="caret"></b></a>
+                        <li>
+                            <a href="~/Register.aspx" runat="server"><span class="glyphicon glyphicon-user"></span>Sign Up</a>
+                        </li>
+                        <li class="dropdowna">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" runat="server"><span class="glyphicon glyphicon-log-in"></span>Login</a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="~/404.aspx" runat="server">404</a>
+                                    <my:Login ID="login" runat="server" />
                                 </li>
                             </ul>
                         </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <span class="glyphicon glyphicon-user"></span>
-                                <asp:LoginName ID="LoginName1" runat="server" />
-                            </a>
-                            <ul class="dropdown-menu"  style="width:400px;">
+                    </AnonymousTemplate>
+                    <RoleGroups>
+                        <asp:RoleGroup Roles="Administrator">
+                            <ContentTemplate>
                                 <li>
-                                    <my:UserInfo ID="UserInfo" runat="server" />
+                                    <a href="~/pages/About.aspx" runat="server">About</a>
                                 </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <asp:LoginStatus ID="LoginStatus1" runat="server" />
-                        </li>
-                    </LoggedInTemplate>
-                    
+                                <li>
+                                    <a href="~/pages/Services.aspx" runat="server">Services</a>
+                                </li>
+                                <li>
+                                    <a href="~/pages/Contact.aspx" runat="server">Contact</a>
+                                </li>
+                                <li>
+                                    <a href="~/pages/projects/Projects.aspx" runat="server">Projects</a>
+                                </li>
+                                <li>
+                                    <a href="~/pages/news/News.aspx" runat="server">News</a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Other Pages <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="~/404.aspx" runat="server">404</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administrator<b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="~/pages/administrator/InsertNews.aspx" runat="server">InsertNews</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <span class="glyphicon glyphicon-user"></span>
+                                        <asp:LoginName ID="LoginName1" runat="server" />
+                                    </a>
+                                    <ul class="dropdown-menu" style="width: 400px;">
+                                        <li>
+                                            <my:UserInfo ID="UserInfo" runat="server" />
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <asp:LoginStatus ID="LoginStatus1" runat="server" />
+                                    
+                                </li>
+                            </ContentTemplate>
+                        </asp:RoleGroup>
+                        <asp:RoleGroup Roles="User">
+                            <ContentTemplate>
+                                <li>
+                                    <a href="~/pages/About.aspx" runat="server">About</a>
+                                </li>
+                                <li>
+                                    <a href="~/pages/Services.aspx" runat="server">Services</a>
+                                </li>
+                                <li>
+                                    <a href="~/pages/Contact.aspx" runat="server">Contact</a>
+                                </li>
+                                <li>
+                                    <a href="~/pages/projects/Projects.aspx" runat="server">Projects</a>
+                                </li>
+                                <li>
+                                    <a href="~/pages/news/News.aspx" runat="server">News</a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Other Pages <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="~/404.aspx" runat="server">404</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <span class="glyphicon glyphicon-user"></span>
+                                        <asp:LoginName ID="LoginName1" runat="server" />
+                                    </a>
+                                    <ul class="dropdown-menu" style="width: 400px;">
+                                        <li>
+                                            <my:UserInfo ID="UserInfo" runat="server" />
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <asp:LoginStatus ID="LoginStatus1" runat="server" />
+                                </li>
+                            </ContentTemplate>
+                        </asp:RoleGroup>
+                    </RoleGroups>
                 </asp:LoginView>
             </ul>
         </div>

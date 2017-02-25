@@ -47,6 +47,7 @@ public partial class moduls_LoginForm : System.Web.UI.UserControl
     protected void Login_Authenticate(object sender, AuthenticateEventArgs e)
     {
         int userId = 0;
+        string roles = string.Empty;
         string constr = ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString;
         using (SqlConnection con = new SqlConnection(constr))
         {
@@ -57,7 +58,10 @@ public partial class moduls_LoginForm : System.Web.UI.UserControl
                 cmd.Parameters.AddWithValue("@Password", Login.Password);
                 cmd.Connection = con;
                 con.Open();
-                userId = Convert.ToInt32(cmd.ExecuteScalar());
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                userId = Convert.ToInt32(reader["UserId"]);
+                roles = reader["Roles"].ToString();
                 con.Close();
             }
             switch (userId)
@@ -69,8 +73,19 @@ public partial class moduls_LoginForm : System.Web.UI.UserControl
                     Login.FailureText = "Account has not been activated.";
                     break;
                 default:
-                    FormsAuthentication.RedirectFromLoginPage(Login.UserName, Login.RememberMeSet);
-                    Session["UserID"] = userId;
+                    Session["UserId"] = userId;
+                    FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1, Login.UserName, DateTime.Now, DateTime.Now.AddMinutes(2880), Login.RememberMeSet, roles, FormsAuthentication.FormsCookiePath);
+                    string hash = FormsAuthentication.Encrypt(ticket);
+                    HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, hash);
+
+                    if (ticket.IsPersistent)
+                    {
+                        cookie.Expires = ticket.Expiration;
+                    }
+                    Response.Cookies.Add(cookie);
+                    
+                    Response.Redirect(FormsAuthentication.GetRedirectUrl(Login.UserName, Login.RememberMeSet));
+
                     break;
             }
         }

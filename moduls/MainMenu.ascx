@@ -80,6 +80,9 @@
                                         <li>
                                             <a href="~/pages/administrator/InsertNews.aspx" runat="server">InsertNews</a>
                                         </li>
+                                        <li>
+                                            <a href="~/pages/administrator/DBUser.aspx" runat="server">Manage Users</a>
+                                        </li>
                                     </ul>
                                 </li>
 
@@ -96,7 +99,7 @@
                                 </li>
                                 <li>
                                     <asp:LoginStatus ID="LoginStatus1" runat="server" />
-                                    
+
                                 </li>
                             </ContentTemplate>
                         </asp:RoleGroup>

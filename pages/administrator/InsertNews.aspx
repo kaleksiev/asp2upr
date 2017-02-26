@@ -2,7 +2,7 @@
 
 <%@ Register TagPrefix="my" TagName="MainMenu" Src="~/moduls/MainMenu.ascx" %>
 <%@ Register TagPrefix="my" TagName="Footer" Src="~/moduls/Footer.ascx" %>
-<%@ Register TagPrefix="my" TagName="InsertNews" Src="~/moduls/InsertNews.ascx" %>
+<%@ Register TagPrefix="my" TagName="InsertNews" Src="~/moduls/administrator/InsertNews.ascx" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Menu" runat="Server">

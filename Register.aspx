@@ -11,7 +11,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
-                     <my:RegistrationForm ID="RegForm" runat="server"/>
+              <my:RegistrationForm ID="RegForm" runat="server"/>
             </div>
         </div>
     </div>

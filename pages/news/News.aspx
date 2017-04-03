@@ -6,6 +6,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="Menu" runat="Server">
     <my:MainMenu ID="MainMenu" runat="server" />
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="Server">
     <div class="container">
         <div class="row">
@@ -18,6 +19,17 @@
                     </li>
                     <li class="active">Blog Home Two</li>
                 </ol>
+                <p>
+                   From: <asp:DropDownList ID="DDL_Filter" runat="server" Width="200px" DataSourceID="SDS_Filter" DataTextField="CreateDate" DataValueField="Id" AutoPostBack="True" OnSelectedIndexChanged="DDL_Filter_SelectedIndexChanged"></asp:DropDownList>
+                </p>
+                <p>
+                   To: <asp:DropDownList ID="DDL_Filter2" runat="server" Width="200px" DataSourceID="SDS_Filter" DataTextField="CreateDate" DataValueField="Id" AutoPostBack="True" OnSelectedIndexChanged="DDL_Filter2_SelectedIndexChanged" ></asp:DropDownList>
+                </p>
+                <asp:SqlDataSource ID="SDS_Filter" runat="server" ConnectionString='<%$ ConnectionStrings:ConnString %>' 
+                    SelectCommand=" 
+                    Select 'Select date' [CreateDate], null [Id]
+                    union all
+                    SELECT [CreateDate], [Id] FROM [News] ORDER BY [CreateDate] DESC"></asp:SqlDataSource>
             </div>
         </div>
     </div>
@@ -57,7 +69,9 @@
             </div>
         </ItemTemplate>
     </asp:ListView>
-    <asp:SqlDataSource runat="server"  ID="SDS_News" ConnectionString='<%$ ConnectionStrings:ConnString %>' SelectCommand="SELECT * FROM [News] ORDER BY [CreateDate] DESC"></asp:SqlDataSource>
+    <asp:SqlDataSource runat="server" ID="SDS_News" ConnectionString='<%$ ConnectionStrings:ConnString %>' 
+        SelectCommand="SELECT * FROM [News] ORDER BY [CreateDate] DESC">
+    </asp:SqlDataSource>
     <hr />
     <div class="container">
         <div class="row">
@@ -77,5 +91,5 @@
     <my:Footer ID="Footer" runat="server" />
 </asp:Content>
 
-
+ 
 

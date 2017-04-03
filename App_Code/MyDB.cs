@@ -12,7 +12,6 @@ using System.IO;
 /// </summary>
 public class MyDB
 {
-
     public static void Insert(string title, string author, string content, System.Web.UI.WebControls.FileUpload FU_Image)
     {
         Guid guid = Guid.NewGuid();

@@ -43,7 +43,9 @@
             SelectCommand="SELECT * FROM [News] WHERE ([Id] = @Id)">
             <SelectParameters>
                 <asp:SessionParameter Name="Id" SessionField="NewsID" Type="Int32" />
+                
             </SelectParameters>
+            
         </asp:SqlDataSource>
 
         <!-- Blog Comments -->

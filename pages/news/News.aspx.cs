@@ -10,7 +10,7 @@ public partial class pages_news_News : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+         
     }
 
     public string ParagraphIfData(string input)
@@ -25,5 +25,21 @@ public partial class pages_news_News : System.Web.UI.Page
         Session["NewsID"] = ((Button)sender).CommandArgument;
 
         Response.Redirect("~/pages/news/NewsArticle.aspx");
+    }
+
+    protected void DDL_Filter_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        Session["FilterFrom"] = DDL_Filter.SelectedValue;
+        Filter();
+    }
+
+    protected void DDL_Filter2_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        Session["FilterTo"] = DDL_Filter.SelectedValue;
+    }
+
+    public void Filter ()
+    {
+        SDS_News.SelectCommand = "SELECT * FROM [News]  Where [Id] = " + Session["FitlerFrom"] ;
     }
 }
